@@ -1,27 +1,17 @@
+var angular = require('angular');
 var db = require('./database');
 
 db.then(function(database) {
-    var angular = require('angular');
-
-    // load Angular dependencies
-    require('angular-animate');
-    require('angular-material');
-    require('angular-messages');
-    require('@uirouter/angularjs');
-    require('ngstorage');
-
-    angular.module('app', [
-        'ngAnimate',
-        'ngMessages',
-        'ngMaterial',
-        'ui.router',
-        'ngStorage'
-    ]);
+    // creates app module
+    require('./module');
+    // register everything the app needs before starting it
+    require('./controllers');
+    require('./directives');
 
     angular.bootstrap(document.getElementsByTagName('html'), ['app'], {
         strictDi: true
     });
 
     // adds SCSS file
-    require('root/scss/main.scss');
+    require('~/scss/main.scss');
 });
