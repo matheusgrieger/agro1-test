@@ -163,6 +163,19 @@ var webpackBaseConfig = {
                         }
                     ]
                 })
+            },
+            // HTML loader
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            minimize: true,
+                            attrs: false
+                        }
+                    }
+                ]
             }
         ]
     }

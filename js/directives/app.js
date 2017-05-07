@@ -6,6 +6,6 @@ angular
 
 function AppDirective() {
     return {
-        template: '<span>Hello world</span>'
+        template: require('~/html/directives/app.html')
     }
 }
