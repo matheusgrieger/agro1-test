@@ -12,11 +12,11 @@
 		"url": "git+https://github.com/matheusgrieger/agro1-test.git"
 	},
 	"keywords": [
-		"agro1",
-		"agros",
-		"angular",
-		"sqlite"
-	],
+        "agro1",
+        "agros",
+        "angular",
+        "sqlite"
+    ],
 	"author": "Matheus Grieger <matheusgrieger@gmail.com>",
 	"license": "ISC",
 	"bugs": {
@@ -43,6 +43,7 @@
 		"rimraf": "^2.6.1",
 		"sass-loader": "^6.0.3",
 		"webpack": "^2.5.1",
+		"webpack-merge": "^4.1.0",
 		"yargs": "^8.0.1"
 	}
 }
