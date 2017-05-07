@@ -106,5 +106,8 @@ module.exports = {
             chunk: ['vendor']
         })
     ],
-    watch: argv.dev
+    watch: argv.dev,
+    watchOptions: {
+        aggregateTimeout: 300
+    }
 }

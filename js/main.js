@@ -1,23 +1,27 @@
-var angular = require('angular');
+var db = require('./database');
 
-// load Angular dependencies
-require('angular-animate');
-require('angular-material');
-require('angular-messages');
-require('@uirouter/angularjs');
-require('ngstorage');
+db.then(function(database) {
+    var angular = require('angular');
 
-angular.module('app', [
-    'ngAnimate',
-    'ngMessages',
-    'ngMaterial',
-    'ui.router',
-    'ngStorage'
-]);
+    // load Angular dependencies
+    require('angular-animate');
+    require('angular-material');
+    require('angular-messages');
+    require('@uirouter/angularjs');
+    require('ngstorage');
 
-angular.bootstrap(document.getElementsByTagName('html'), ['app'], {
-    strictDi: true
+    angular.module('app', [
+        'ngAnimate',
+        'ngMessages',
+        'ngMaterial',
+        'ui.router',
+        'ngStorage'
+    ]);
+
+    angular.bootstrap(document.getElementsByTagName('html'), ['app'], {
+        strictDi: true
+    });
+
+    // adds SCSS file
+    require('root/scss/main.scss');
 });
-
-// adds SCSS file
-require('root/scss/main.scss');
