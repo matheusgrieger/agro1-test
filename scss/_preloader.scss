@@ -1,0 +1,70 @@
+#preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #fff;
+	color: #ccc;
+	z-index: 99;
+
+	.material-icons {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		font-size: 48px;
+
+		&.empty {
+			animation-name: preloaderOut;
+		}
+
+		&.full {
+			animation-name: preloaderIn;
+		}
+	}
+	@keyframes preloaderOut {
+		0% {
+			opacity: 1;
+			transform: translate(-50%, -50%) rotate(0);
+		}
+
+		25% {
+			opacity: 0;
+			transform: translate(-50%, -50%) rotate(180deg);
+		}
+
+		75% {
+			opacity: 0;
+			transform: translate(-50%, -50%) rotate(180deg);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translate(-50%, -50%) rotate(360deg);
+		}
+	}
+	@keyframes preloaderIn {
+		0% {
+			opacity: 0;
+			transform: translate(-50%, -50%) rotate(0);
+		}
+
+		25% {
+			opacity: 1;
+			transform: translate(-50%, -50%) rotate(180deg);
+		}
+
+		75% {
+			opacity: 1;
+			transform: translate(-50%, -50%) rotate(180deg);
+		}
+
+		100% {
+			opacity: 0;
+			transform: translate(-50%, -50%) rotate(360deg);
+		}
+	}
+}

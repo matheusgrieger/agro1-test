@@ -1,0 +1,32 @@
+<md-content flex layout="column" layout-align="center" layout-padding>
+    <form name="form" ng-submit="login.login()">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Login</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="column">
+                <md-input-container>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" required ng-model="login.credentials.username" md-autofocus>
+                    <div ng-messages="form.username.$error">
+                        <div ng-message="required">The username field is required</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required ng-model="login.credentials.password" md-autofocus>
+                    <div ng-messages="form.password.$error">
+                        <div ng-message="required">The password field is required</div>
+                    </div>
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button type="submit" class="md-raised md-accent" ng-disabled="form.$invalid || login.loading">
+                    <md-icon class="material-icons">send</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </form>
+</md-content>

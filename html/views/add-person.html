@@ -1,0 +1,32 @@
+<md-content layout-padding layout="column" flex>
+    <form name="form" ng-submit="ap.addPerson()">
+        <md-card>
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Add person</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="column">
+                <md-input-container>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" ng-model="ap.data.name" required md-autofocus>
+                    <div ng-messages="form.name.$error">
+                        <div ng-message="required">A person must have a name</div>
+                    </div>
+                </md-input-container>
+                <md-input-container>
+                    <label>Birthdate</label>
+                    <md-datepicker name="birthdate" ng-model="ap.data.birthdate" md-max-date="ap.maxBirthdate" md-hide-icons="triangle" required md-open-on-focus></md-datepicker>
+                    <div ng-messages="form.birthdate.$error">
+                        <div ng-message="required">The birthdate field is required</div>
+                    </div>
+                </md-input-container>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button type="submit" class="md-accent md-raised" ng-disabled="ap.waiting || form.$invalid">
+                    <md-icon class="material-icons">send</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </form>
+</md-content>
