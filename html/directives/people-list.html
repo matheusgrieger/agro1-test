@@ -1,0 +1,14 @@
+<md-list>
+    <md-list-item ng-repeat="p in textFilter() | orderBy : 'birthdate'" class="md-2-line" ng-class="{'id-highlighted': p.id == idHighlight}">
+        <div class="md-list-item-text">
+            <h3>{{ p.name }}</h3>
+            <p>
+                <md-icon class="material-icons">wb_sunny</md-icon>
+                {{ p.birthdate | date }}
+            </p>
+            <md-button class="md-secondary md-warn md-icon-button" ng-click="delete($event, p)">
+                <md-icon class="material-icons">delete</md-icon>
+            </md-button>
+        </div>
+    </md-list-item>
+</md-list>

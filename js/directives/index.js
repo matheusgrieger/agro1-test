@@ -1,1 +1,2 @@
-require('./app');
+require('./App');
+require('./PeopleList');

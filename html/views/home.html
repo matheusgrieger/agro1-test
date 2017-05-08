@@ -1,0 +1,18 @@
+<md-content layout-padding layout="column" flex>
+    <md-card>
+        <md-card-content ng-show="home.people.length < 1">
+            <p>Nothing found. Try adding some people using the floating button below!</p>
+        </md-card-content>
+        <md-card-content ng-show="home.people.length > 0" layout="column">
+            <md-input-container>
+                <label for="filter">Filter</label>
+                <input type="search" id="filter" ng-model="home.filter">
+            </md-input-container>
+            <people-list people="home.people" id-highlight="{{ home.idHighlight }}" filter="home.filter" delete="home.deletePerson"></people-list>
+        </md-card-content>
+    </md-card>
+    <md-button class="md-fab md-fab-bottom-right" ui-sref="add">
+        <md-tooltip md-direction="top">Add person</md-tooltip>
+        <md-icon class="material-icons">add</md-icon>
+    </md-button>
+</md-content>

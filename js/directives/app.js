@@ -1,11 +1,24 @@
+'use strict';
 var angular = require('angular');
 
+/**
+ * app declaration
+ * Module: app
+ */
 angular
-    .module('app')
-    .directive('app', AppDirective);
+	.module('app')
+	.directive('app', AppDirective);
 
+/**
+ * AppDirective function declaration
+ */
 function AppDirective() {
-    return {
-        template: require('~/html/directives/app.html')
-    }
+	/**
+	 * Directive declaration
+	 */
+	return {
+		template: require('~/html/directives/app.html'),
+		controller: 'AppController',
+		controllerAs: 'app'
+	}
 }
