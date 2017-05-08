@@ -8,6 +8,7 @@ db.then(function(database) {
 	require('./controllers');
 	require('./directives');
 	require('./services');
+	require('./filters');
 
 	angular.bootstrap(document.getElementsByTagName('html'), ['app'], {
 		// enables strict dependency injection

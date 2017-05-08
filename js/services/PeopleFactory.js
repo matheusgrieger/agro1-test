@@ -50,7 +50,7 @@ function PeopleFactory($q) {
 				database.transaction(function(transaction) {
 					// executes insert sql
 					// uses prepared statements to try and avoid injections
-					transaction.executeSql('INSERT INTO `people` (`name`, `birthdate`) VALUES (?, ?)', [data.name, data.birthdate], function(tx, results) {
+					transaction.executeSql('INSERT INTO `people` (`first_name`, `last_name`, `nationality`, `picture`) VALUES (?, ?, ?, ?)', [data.first_name, data.last_name, data.nationality.value, data.picture], function(tx, results) {
 						// resolves if inserted one
 						if (results.rowsAffected === 1) {
 							resolve(results.insertId);

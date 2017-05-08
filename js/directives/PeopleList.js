@@ -36,8 +36,12 @@ function PeopleListDirective() {
 			scope.textFilter = function() {
 				var reg = new RegExp(scope.filter, 'i');
 				return scope.people.filter(function(person) {
-					return reg.test(person.name);
+					return reg.test(scope.fullName(person));
 				});
+			};
+
+			scope.fullName = function(person) {
+				return person.first_name + ' ' + person.last_name;
 			}
 		},
 		template: require('~/html/directives/people-list.html')
