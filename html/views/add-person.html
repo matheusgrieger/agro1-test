@@ -8,19 +8,44 @@
             </md-card-title>
             <md-card-content layout="column">
                 <md-input-container>
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" ng-model="ap.data.name" required md-autofocus>
-                    <div ng-messages="form.name.$error">
-                        <div ng-message="required">A person must have a name</div>
+                    <label for="first-name">First name</label>
+                    <input type="text" name="firstName" id="first-name" ng-model="ap.data.first_name" required md-autofocus>
+                    <div ng-messages="form.firstName.$error">
+                        <div ng-message="required">A person must have a first name</div>
                     </div>
                 </md-input-container>
                 <md-input-container>
-                    <label>Birthdate</label>
-                    <md-datepicker name="birthdate" ng-model="ap.data.birthdate" md-max-date="ap.maxBirthdate" md-hide-icons="triangle" required md-open-on-focus></md-datepicker>
-                    <div ng-messages="form.birthdate.$error">
-                        <div ng-message="required">The birthdate field is required</div>
+                    <label for="last-name">Last name</label>
+                    <input type="text" name="lastName" id="last-name" ng-model="ap.data.last_name" required md-autofocus>
+                    <div ng-messages="form.lastName.$error">
+                        <div ng-message="required">A person must have a last name</div>
                     </div>
                 </md-input-container>
+                <md-autocomplete required md-input-name="nationality" md-min-length="0" md-selected-item="ap.data.nationality" md-search-text="ap.searchNationality" md-items="n in ap.filterNationalities()" md-item-text="n.title" md-require-match md-floating-label="Nationality">
+                    <md-item-template>
+                        <span md-highlight-text="ap.searchNationality">{{ n.title }}</span>
+                    </md-item-template>
+                    <div ng-messages="form.nationality.$error">
+                        <div ng-message="required">The nationality field is required</div>
+                    </div>
+                </md-autocomplete>
+                <md-card md-colors="::{backgroundColor: 'primary-700'}">
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-title">Picture</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content layout="column">
+                        <img ng-src="{{ ap.pictureThumb() }}">
+                    </md-card-content>
+                    <md-card-actions layout="row" layout-align="center">
+                        <md-button ng-click="ap.selectPicture()" md-colors="::{color: 'background-100'}" mg-file-browser>
+                            <input type="file" style="display: none;" mg-file-handler mg-file-model="ap.data.picture">
+                            Change
+                            <md-icon class="material-icons" md-colors="::{color: 'background-100'}">photo_camera</md-icon>
+                        </md-button>
+                    </md-card-actions>
+                </md-card>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
                 <md-button type="submit" class="md-accent md-raised" ng-disabled="ap.waiting || form.$invalid">

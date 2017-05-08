@@ -30,27 +30,41 @@ function AddPersonController($mdToast, People, $state) {
 	 */
 	vm.waiting = false;
 	vm.data = {
-		name: null,
-		birthdate: null
+		first_name: null,
+		last_name: null,
+		nationality: null,
+		picture: ''
 	};
 	vm.maxBirthdate = new Date();
+	vm.searchNationality = '';
+	vm.nationalities = [
+		{
+			value: 'BR',
+			title: 'Brazilian'
+		},
+		{
+			value: 'JP',
+			title: 'Japanese'
+		},
+		{
+			value: 'US',
+			title: 'American'
+		}
+	];
 
 	/**
 	 * Bindable functions
 	 */
 	vm.addPerson = AddPerson;
+	vm.filterNationalities = FilterNationalities;
+	vm.pictureThumb = PictureThumb;
 
 	////////////
 
 	function AddPerson() {
 		vm.waiting = true;
 
-		var data = {
-			name: vm.data.name,
-			birthdate: +vm.data.birthdate
-		};
-
-		People.addPerson(data)
+		People.addPerson(vm.data)
 			.then(function(result) {
 				$mdToast.showSimple('Person added successfully!');
 				$state.go('home', {
@@ -59,6 +73,17 @@ function AddPersonController($mdToast, People, $state) {
 			}, function(err) {
 				console.log(err);
 			});
+	}
+
+	function FilterNationalities() {
+		var reg = new RegExp(vm.searchNationality, 'i');
+		return vm.nationalities.filter(function(n) {
+			return reg.test(n.title);
+		});
+	}
+
+	function PictureThumb() {
+		return vm.data.picture ? vm.data.picture : 'http://placehold.it/200x200&text=No picture';
 	}
 
 	////////////
